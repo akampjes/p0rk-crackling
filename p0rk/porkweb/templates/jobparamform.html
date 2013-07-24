@@ -1,0 +1,24 @@
+{% for atp in at.params.all %}
+    <div id="attackParam_{{atp.name}}_cg" class="control-group">
+     <label class="control-label" label-for="attackParam_{{ atp.name }}">{{ atp.name }}</label>
+	 <div class="controls"><input id="attackParam_{{ atp.name }}" name=attackParam_{{atp.name}} type="text" maxlength=64 value="{{ atp.value}}"></div>
+    </div>
+{% endfor %}
+
+{% for atp in at.charsets.all %}
+<div id="attackParam_charset_{{atp.name}}_cg" class="control-group">
+	<label class="control-label" label-for="attackParam_{{ atp.name }}">{{ atp.name }}</label>
+	<div class="controls">
+		<select id="attackParam_charset_{{atp.name}}" name="attackParam_{{atp.name}}">
+			{% for c in atp.CHARSET_CHOICES %}
+				{% if c == atp.charset %}
+				<option selected="selected">{{ c }}</option>
+				{% else %}
+				<option>{{ c }}</option>
+				{% endif %}
+			{% endfor %}
+		</select>
+	</div>
+</div>
+{% endfor %}
+

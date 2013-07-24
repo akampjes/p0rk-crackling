@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row-fluid">
+ <div id="jobsHole" class="span8">
+   {% include "jobs.html" %}
+ </div>
+ <div class="span4">
+  <div class="well">
+  <h1>Recently Cracked</h1>
+  {% include "cracked.html" %}
+  </div>
+ </div>
+</div>
+
+
+{% include "addjobform.html" %}
+
+{% endblock %}

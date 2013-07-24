@@ -1,0 +1,9 @@
+<img class="osico"
+{% if os == "macos" %}
+ src="/static/images/Macos.png"
+{% else %} {% if os == "linux" %}
+ src="/static/images/Linux.png"
+{% else %} {% if os == "windows" %}
+ src="/static/images/Windows.png"
+{% endif %}{%endif%}{%endif%}
+>

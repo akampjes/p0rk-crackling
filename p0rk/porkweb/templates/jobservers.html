@@ -1,0 +1,33 @@
+<!--
+<div class="well">
+<h1>Crackling Servers</h1>
+<table class="table">
+ <thead>
+  <tr>
+   <th>OS</th>
+   <th>Status</th>
+   <th>Address</th>
+   <th>Details</th>
+  </tr>
+ </thead>
+ <tbody>
+  {% for s in servers %}
+   <tr>
+    <td>
+	 {% with s.os as os %}{% include "osicon.html" %}{% endwith %}
+    </td>
+    <td>
+     {{ s.status }}
+    </td>
+    <td>
+     {{ s.hostname }} ({{ s.ipaddr }}:{{ s.port }})
+    </td>
+    <td>
+     {{ s.details }}
+    </td>
+   </tr>
+  {% endfor %}
+ </tbody>
+</table>
+</div>
+-->

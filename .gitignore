@@ -42,3 +42,6 @@ eula.accepted
 
 #my vim swap files
 *.swp
+
+#ignore local settings
+settings_local.py

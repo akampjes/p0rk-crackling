@@ -1,0 +1,83 @@
+<style>
+	.table-hover tbody tr:hover td, .table-hover tbody tr:hover th { background-color: #fff; }
+</style>
+<script>
+function deleteJob(event, jobid)
+{
+	Dajaxice.porkweb.deleteJob(Dajax.process, {'jobid':jobid});
+	if(event.stopPropagation){event.stopPropagation();}
+	else if(window.event){window.event.cancelBubble=true;}
+}
+function cancelJob(event, jobid)
+{
+	Dajaxice.porkweb.cancelJob(Dajax.process, {'jobid':jobid});
+	if(event.stopPropagation){event.stopPropagation();}
+	else if(window.event){window.event.cancelBubble=true;}
+}
+</script>
+<div class="well">
+<div class="row-fluid">
+ <div class="span10">
+  <h1>Jobs</h1>
+ </div>
+ <div class="span2">
+  <a class="btn" href="javascript:$('#addJobModal').modal('show')"><i class="icon-plus-sign"></i></a>
+  <a class="btn" href="javascript:Dajaxice.porkweb.updateJobs(Dajax.process)"><i class="icon-refresh"></i></a>
+ </div>
+</div>
+<table class="table table-hover">
+ <thead>
+  <tr>
+   <th>Status</th>
+   <th>Hash</th>
+   <th>Attack</th>
+   <th>Start</th>
+   <th>Progress/Finished</th>
+	<th># Cracked</th>
+   <th></th>
+  </tr>
+ </thead>
+ <tbody>
+  {% for j in jobs %}
+  {% if j.id == jobid %}
+  <tr id="job{{ j.id }}" style="background-color: #fff;" onclick="document.location = '/job/{{ j.id}}';">
+  {% else %}
+  <tr id="job{{ j.id }}" class='hoverDiv' onclick="document.location = '/job/{{ j.id}}';">
+  {% endif %}
+    <td>
+     {{ j.status }}
+    </td>
+    <td>
+	 {{ j.hashType.name }}
+    </td>
+    <td>
+	 {{ j.attackType.name }}
+    </td>
+	<td>{{ j.started }}</td>
+    <td>
+		{% if j.status != 'Finished' %}
+		<div class="progress progress-striped active">
+		  <div class="bar" style="width: {{j.progress}}%;"></div>
+		</div>
+		{% else %}
+		<!--
+		<div class="progress">
+		  <div class="bar" style="width: {{j.progress}}%;"></div>
+		</div>
+		-->
+		{{ j.finished }}
+		{% endif %}
+    </td>
+	<td>{{j.crackedCount}}/{{j.hashesCount}}</td>
+	<td>
+		{% if j.status != 'Finished' %}
+		<a class="btn" onclick="cancelJob(event, {{j.id}})"><i class="icon-stop"></i></a>
+		{% else %}
+		<a class="btn" onclick="deleteJob(event, {{j.id}})"><i class="icon-remove-sign"></i></a>
+		{% endif %}
+	</td>
+   </tr>
+  {% endfor %}
+ </tbody>
+</table>
+</div>

@@ -1,0 +1,31 @@
+<div class="well">
+<div class="row-fluid">
+ <div class="span2">
+	 <!--<a class="btn" href="javascript:Dajaxice.porkweb.updateJobs(Dajax.process)"><i class="icon-refresh"></i></a> need this for crackeds-->
+ </div>
+</div>
+<table class="table">
+ <thead>
+  <tr>
+   <th>Hash</th>
+   <th>Value</th>
+   <th>Time</th>
+  </tr>
+ </thead>
+ <tbody>
+  {% for c in cracked %}
+   <tr>
+    <td>
+     {{ c.hash }}
+    </td>
+    <td>
+	 {{ c.value }}
+    </td>
+    <td>
+	 {{ c.when }}
+    </td>
+   </tr>
+  {% endfor %}
+ </tbody>
+</table>
+</div>

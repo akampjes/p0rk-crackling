@@ -1,0 +1,50 @@
+
+<div class="modal hide" id="addJobModal">
+ <div class="modal-header">
+  <a class="close" data-dismiss="modal">&times;</a>
+   <h3>Add Job</h3>
+ </div>
+ <div class="modal-body">
+  <form id="addJobForm" class="form-horizontal">
+   {% csrf_token %}
+   <fieldset>
+    <div id="{{ addJobForm.hashType.html_name }}_cg" class="control-group">
+     <label class="control-label" label-for="{{ addJobForm.hashType.html_name }}">{{ addJobForm.hashType.label }}</label>
+	 <div class="controls">{{addJobForm.hashType}}</div>
+    </div>
+    <div id="{{ addJobForm.attackType.html_name }}_cg" class="control-group">
+
+     <label class="control-label" label-for="{{ addJobForm.attackType.html_name }}">{{ addJobForm.attackType.label }}</label>
+	 <div class="controls">{{addJobForm.attackType}}</div>
+    </div>
+	
+	<script>
+
+function send_form(){
+	data = $('#addJobForm').serialize(true);
+	console.log(data)
+	Dajaxice.porkweb.addJob(Dajax.process,{'form':data});
+}
+
+$(document).ready(function () { 
+		$("#id_{{ addJobForm.attackType.html_name }}").attr("onchange", "Dajaxice.porkweb.attackParams(Dajax.process,{'atid':this.value});");
+	});
+	</script>
+
+	<span id="jobParamFormHole">
+	</span>
+    <div id="{{ addJobForm.hashes.html_name }}_cg" class="control-group">
+
+     <label class="control-label" label-for="{{ addJobForm.hashes.html_name }}">{{ addJobForm.hashes.label }}</label>
+	 <div class="controls">{{addJobForm.hashes}}
+ 	  <p>{{addJobForm.hashes.help_text}}</p>
+	 </div>
+    </div>
+   </fieldset>
+  </form>
+ </div>
+ <div class="modal-footer">
+   <a data-dismiss="modal" class="btn">Cancel</a>
+   <a href="javascript:send_form();" class="btn btn-primary">Save</a>
+ </div>
+</div>
