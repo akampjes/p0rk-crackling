@@ -33,3 +33,12 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# My test database
+.db
+
+#hashcat licence accepted file
+eula.accepted
+
+#my vim swap files
+*.swp
