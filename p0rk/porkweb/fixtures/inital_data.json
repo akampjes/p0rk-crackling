@@ -1,0 +1,71 @@
+[
+{
+  "pk": 2, 
+  "model": "porkweb.attacktype", 
+  "fields": {
+    "notes": "", 
+    "name": "Bruteforce"
+  }
+},
+{
+  "pk": 132, 
+  "model": "porkweb.param", 
+  "fields": {
+    "name": "minLen", 
+    "value": "4"
+  }
+},
+{
+  "pk": 133, 
+  "model": "porkweb.param", 
+  "fields": {
+    "name": "maxLen", 
+    "value": "6"
+  }
+},
+{
+  "pk": 132, 
+  "model": "porkweb.attackparam", 
+  "fields": {
+    "attack": 2
+  }
+},
+{
+  "pk": 133, 
+  "model": "porkweb.attackparam", 
+  "fields": {
+    "attack": 2
+  }
+},
+{
+  "pk": 7, 
+  "model": "porkweb.attackcharset", 
+  "fields": {
+    "attack": 2, 
+    "charset": "AlphaNum", 
+    "name": "Charset"
+  }
+},
+{
+  "pk": 1, 
+  "model": "porkweb.hashtype", 
+  "fields": {
+    "ocllite": true, 
+    "hashcat": true, 
+    "name": "MD5", 
+    "oclplus": true, 
+    "hashcatType": 0
+  }
+},
+{
+  "pk": 2, 
+  "model": "porkweb.hashtype", 
+  "fields": {
+    "ocllite": true, 
+    "hashcat": true, 
+    "name": "SHA1", 
+    "oclplus": true, 
+    "hashcatType": 100
+  }
+}
+]
