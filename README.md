@@ -40,7 +40,35 @@ Keep in mind that amqp running on rabbitmq should probably have a password set.
 Currently there is no security authentication or authorization built into p0rk-crackling.
 I recommend that you run it only on trusted networks or within a VPN.
 
+### Running
+To run the web interface, just for testing or a low usage/no secruity server, run
+`python manage.py runserver` from within the django root folder.
 
+To collect results you need to run a celery worker process, by default (can change in the settings.py file)
+it will run every seven seconds.
+`python manage.py celery worker -B -l info -Q beats`
 
 Setting up crackling
 --------------------
+### Requirements
+#### Python packages
+- celery
+
+#### Binary
+- Hashcat (http://hashcat.net/hashcat/)
+- oclHashcat-lite (http://hashcat.net/oclhashcat-lite/)
+
+### Setup
+#### config.py
+- Configure `CRACKLING_BROKER`, `CRACKLING_BACKEND` to point to the
+location of the rabbitmq amqp server.
+- Configure `HASHCAT_PATH`, `OCLLITE_PATH` with the location of hashact and
+oclhashcat-lite respectively.
+
+#### hashcat
+- Run hashcat and ocllite and accept the licence so that the `eula.accepted` file is
+created in the same folder as the hashcat binary.
+
+### Running
+Back one directory from the crackling folder (in p0rk-crackling/ if you just grabbed off github)
+run `celery worker --app=crackling -l info -Q crackling`
