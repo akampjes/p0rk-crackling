@@ -2,8 +2,11 @@ p0rk-crackling
 ==============
 
 Distributed password cracker for operating over high latency networks of loosely coupled hosts.
+Main components used are django for the interface, celery for the communication and hashcat for
+the actual password cracking.
 
-Complete docs, coming soon to a repo near you.
+![alt text](http://i.imgur.com/Dd1V3mT.png "Screenshot of p0rk-crackling in action")
+
 
 Setting up p0rk
 ---------------
