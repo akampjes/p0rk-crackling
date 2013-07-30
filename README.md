@@ -5,6 +5,9 @@ Distributed password cracker for operating over high latency networks of loosely
 Main components used are django for the interface, celery for the communication and hashcat for
 the actual password cracking.
 
+P0rk will manage everything, run this on one server (doesn't need a GPU).
+Run Crackling on each of your GPU instances (one per server).
+
 ![alt text](http://i.imgur.com/Dd1V3mT.png "Screenshot of p0rk-crackling in action")
 
 
@@ -60,6 +63,7 @@ Setting up crackling
 #### Binary
 - Hashcat (http://hashcat.net/hashcat/)
 - oclHashcat-lite (http://hashcat.net/oclhashcat-lite/)
+- Note: you need to make sure that you have the correct drivers for hashcat.
 
 ### Setup
 #### config.py
